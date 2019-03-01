@@ -11,14 +11,14 @@ var random = Math.floor(Math.random() * availableChoices.length)
 var computerChoice = availableChoices[random];
 console.log(computerChoice);
 
-//Listens forn imput from user
+//Listens for imput from user
 document.onkeyup = function (event) {
     var playerGuess = event.key;
     console.log(playerGuess);
 
     if (playerGuess == computerChoice) {
         wins++
-        attempts = 8;
+        guessesLeft = 8;
         guessedLetter = [];
     }
     if (playerGuess !== computerChoice) {
@@ -26,15 +26,14 @@ document.onkeyup = function (event) {
     }
     if (guessesLeft == 0) {
         losses++
-        attempts = 8;
+        guessesLeft = 8;
         guessedLetter = [];
     } else {
         guessedLetter.push(playerGuess);
-        attempts = 8;
-        
         console.log(guessedLetter);
     }
 
+    //talks to html
     document.getElementById("won").innerHTML = wins;
     document.getElementById("lost").innerHTML = losses;
     document.getElementById("attempts").innerHTML = guessedLetter;
